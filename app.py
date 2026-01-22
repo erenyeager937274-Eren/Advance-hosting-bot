@@ -11,11 +11,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- CONFIGURATION ---
-API_ID = int(os.environ.get("API_ID", 12345))
-API_HASH = os.environ.get("API_HASH", "abcde")
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "token")
-OWNER_ID = int(os.environ.get("OWNER_ID", 12345))
-MONGO_URL = os.environ.get("MONGO_URL", "")
+API_ID = int(os.environ.get("API_ID", 23264133))
+API_HASH = os.environ.get("API_HASH", "945e5b76ce8550bebbeeaf5599e7ce58")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "8563773637:AAHqQH6dPC2FlsjAVLDSRc-xWhHaQziWh9s")
+OWNER_ID = int(os.environ.get("OWNER_ID", 6883111123))
+MONGO_URL = os.environ.get("MONGO_URL", "mongodb+srv://e55791917_db_user:RzXaeGE3AagxvADd@cluster0.ryscv19.mongodb.net/?appName=Cluster0")
 
 # --- SETUP ---
 app = Client("ProHoster", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
