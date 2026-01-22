@@ -7,6 +7,8 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
+from flask import Flask
+import threading
 
 load_dotenv()
 
@@ -20,6 +22,18 @@ MONGO_URL = os.environ.get("MONGO_URL", "mongodb+srv://e55791917_db_user:RzXaeGE
 # --- SETUP ---
 app = Client("ProHoster", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
+# --- DUMMY WEB SERVER (FOR RENDER PORT) ---
+web = Flask(__name__)
+
+@web.route("/")
+def home():
+    return "Pro Hosting Bot is Running"
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+    web.run(host="0.0.0.0", port=port)
+
+threading.Thread(target=run_web, daemon=True).start()
 # MongoDB Connection
 if MONGO_URL:
     mongo = AsyncIOMotorClient(MONGO_URL)
